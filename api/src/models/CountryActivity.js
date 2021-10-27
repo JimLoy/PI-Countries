@@ -14,7 +14,7 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       references: {
         model: 'activity',
-        key: 'name'
+        key: 'id'
       }
     }
   },

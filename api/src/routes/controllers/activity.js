@@ -6,7 +6,8 @@ async function postActivity (req, res, next) {
   season = season[0].toUpperCase() + season.slice(1).toLowerCase();
   try{
     const newActivity = await Activity.create({name, difficulty, duration, season});
-    res.json(await newActivity.addCountries(countries))
+    await newActivity.addCountries(countries)
+    res.json('Activity Created')
   }
   catch(err){
     next(err)
