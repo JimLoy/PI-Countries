@@ -13,7 +13,7 @@ async function preCountry(){
           id: coun.cca3,
           name: coun.name.official,
           flag: coun.flags[1],
-          continet: coun.region,
+          continent: coun.region,
           capital: coun.capital?coun.capital[0]:'none',
           subregion: coun.subregion?coun.subregion:'none',
           area: coun.area,
@@ -40,14 +40,14 @@ async function getCountries (req, res, next) {
             [Op.substring]: name
           }
         },
-        attributes: ['flag', 'name', 'continet'],
+        attributes: ['flag', 'name', 'continent'],
         include:  Activity
       });
       if (country.length < 1) res.json('Country Not Found')
-      res.json(country)
+      res.json({result: country, count: country.length})
     } else {//-------------------SIN--NOMBRE--------------------------------
-    country = await Country.findAll({attributes:['flag', 'name', 'continet']})
-    res.json(country)
+    country = await Country.findAll({attributes:['flag', 'name', 'continent']})
+    res.json({result: country, count: country.length})
     }
   } catch (err) {
     next(err)
