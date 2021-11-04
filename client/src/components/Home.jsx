@@ -1,4 +1,4 @@
-import {useEffect} from 'react';
+import {useEffect, useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {getAllCountries, setPage} from '../redux/actions.js';
 import Country from './Country.jsx';
@@ -7,8 +7,19 @@ export default function Home() {
   const dispatch = useDispatch();
   const {countries, page} = useSelector(state => state);
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const [countriesPerPage, setCountriesPerPage] = useState(9);
+  const indexOfLastCountry = currentPage * countriesPerPage;
+  const indexOfFirstCountry = indexOfLastCountry - countriesPerPage;
+  const currentCountries = countries.slice(indexOfFirstCountry,indexOfLastCountry);
+
+
+  const paginado = (pageName) => {
+    setCurrentPage(pageName)
+  }
+
   useEffect(()=>{
-    dispatch(getAllCountries({}))
+    dispatch(getAllCountries())
   },[dispatch])
 
   const changePage = page => {
