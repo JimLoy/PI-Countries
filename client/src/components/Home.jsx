@@ -1,36 +1,49 @@
 import {useEffect, useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import {getAllCountries, setPage} from '../redux/actions.js';
+import {getAllCountries} from '../redux/actions.js';
 import Country from './Country.jsx';
+import Paginado from './Paginado.jsx';
+import FilterContinent from './FilterContinent.jsx';
 
 export default function Home() {
   const dispatch = useDispatch();
-  const {countries, page} = useSelector(state => state);
+  const {countries} = useSelector(state => state);
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [countriesPerPage, setCountriesPerPage] = useState(9);
+  const countriesPerPage = 9;
   const indexOfLastCountry = currentPage * countriesPerPage;
   const indexOfFirstCountry = indexOfLastCountry - countriesPerPage;
   const currentCountries = countries.slice(indexOfFirstCountry,indexOfLastCountry);
 
 
-  const paginado = (pageName) => {
-    setCurrentPage(pageName)
+  const paginado = (pageNum) => {
+    setCurrentPage(pageNum)
   }
 
   useEffect(()=>{
     dispatch(getAllCountries())
   },[dispatch])
 
-  const changePage = page => {
-    dispatch(setPage(page));
-  }
+
 
   return (
     <div className='Home'>
+
+      <select className='Population'>
+        <option>none</option>
+        <option>asc</option>
+        <option>desc</option>
+      </select>
+      <select className='Order'>
+        <option>none</option>
+        <option>asc</option>
+        <option>desc</option>
+      </select>
+      <FilterContinent/>
+      
       <div className='Countries'>
       {
-        countries?.result?.length > 0 && countries.result.map(country => {
+        currentCountries?.length > 0 && currentCountries.map(country => {
           return <Country
             id={country.id}
             name={country.name}
@@ -41,9 +54,11 @@ export default function Home() {
         })
       }
       </div>
-      <button disable={page -1 === 0} onClick={() => changePage(page - 1)}>Previous</button>
-        <label>{page}</label>
-      <button disable={countries?.count <= (page * 9)} onClick={() => changePage(page + 1)}>Next</button>
+        <Paginado
+          countriesPerPage={countriesPerPage}
+          countries={countries.length}
+          paginado={paginado}
+        />
     </div>
   )
 }

@@ -44,10 +44,10 @@ async function getCountries (req, res, next) {
         include:  Activity
       });
       if (country.length < 1) res.json('Country Not Found')
-      res.json({result: country, count: country.length})
+      res.json(country)
     } else {//-------------------SIN--NOMBRE--------------------------------
     country = await Country.findAll({attributes:['flag', 'name', 'continent']})
-    res.json({result: country, count: country.length})
+    res.json(country)
     }
   } catch (err) {
     next(err)

@@ -11,12 +11,11 @@ import {
 
 
 const initialState = {
-  countries: {},
+  countries: [],
   countriesModifed: [],
   country:{},
   name:'',
   page:1,
-  continent:'',
   nameActivity:'',
   population:'',
   order:''
@@ -27,7 +26,7 @@ function reducer (state = initialState, { type, payload }){
 
     case GET_ALL_COUNTRIES:
       return {
-        ...state, countries: payload
+        ...state, countries: payload, countriesModifed: payload
       }
 
     case GET_COUNTRY_BY_ID:
@@ -46,13 +45,14 @@ function reducer (state = initialState, { type, payload }){
       }
 
     case FILTER_CONTINENT:
-      const countriesForContinent = state.countries.result.filter(country => country.continent === payload)
+      if(payload === 'All') return state
+      const countriesForContinent = state.countries.filter(country => country.continent === payload)
       return {
         ...state, countriesModifed: countriesForContinent
       }
 
     case FILTER_NAME_ACTIVITY:
-      const countriesForActivity = state.countries.result.filter(country => country.activity.name === payload);
+      const countriesForActivity = state.countries.filter(country => country.activity.name === payload);
       return {
         ...state, countriesModifed: countriesForActivity
       }

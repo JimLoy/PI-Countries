@@ -1,30 +1,27 @@
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import {setPage, filterGeneres} from '../redux/actions.js';
+import { useDispatch } from 'react-redux';
+import { filterContinent } from '../redux/actions.js';
 
 
 
 export default function FilterContinent() {
   const dispatch = useDispatch();
-  const { genres } = useSelector(state=> state);
 
 
 
-  const handleOnChange = (e)=>{
-    e.preventDefault()
-    dispatch(filterGeneres(e.target.value))
-    dispatch(setPage(1))
+  const handleFilterContinent = (e) => {
+    dispatch(filterContinent(e.target.value))
   }
 
+
   return (
-    <div>
-      <select onChange={handleOnChange}>
-        {
-          genres?.length && genres.map(gen => {
-            return <option value={gen.name} key={gen.id}>{gen.name}</option>
-          })
-        }
-      </select>
-    </div>
+    <select onChange={handleFilterContinent(e)}>
+      <option value='All'>All</option>
+      <option value='Americas'>Americas</option>
+      <option value='Europe'>Europe</option>
+      <option value='Asia'>Asia</option>
+      <option value='Africa'>Africa</option>
+      <option value='Oceania'>Oceania</option>
+      <option value='Antartic'>Antartic</option>
+    </select>
   )
 }
