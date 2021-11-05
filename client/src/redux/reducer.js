@@ -1,7 +1,6 @@
 import {
   GET_ALL_COUNTRIES,
   GET_COUNTRY_BY_ID,
-  SET_NAME,
   SET_PAGE,
   FILTER_CONTINENT,
   FILTER_NAME_ACTIVITY,
@@ -14,11 +13,8 @@ const initialState = {
   countries: [],
   countriesModifed: [],
   country:{},
-  name:'',
-  page:1,
   nameActivity:'',
-  population:'',
-  order:''
+  page:1,
 }
 
 function reducer (state = initialState, { type, payload }){
@@ -32,11 +28,6 @@ function reducer (state = initialState, { type, payload }){
     case GET_COUNTRY_BY_ID:
       return {
         ...state, country: payload
-      }
-
-    case SET_NAME:
-      return {
-        ...state, name: payload
       }
 
     case SET_PAGE:
@@ -58,13 +49,33 @@ function reducer (state = initialState, { type, payload }){
       }
 
     case ORDER_POPULATION:
+      let resultPopulation = state.countriesModifed;
+      if(payload === 'none'){
+        return state
+      }else if(payload === 'min'){
+        resultPopulation = resultPopulation.sort((a, b) => a.population - b.population)
+      }else {
+        resultPopulation = resultPopulation.sort((a, b) => b.population - a.population)
+      }
       return {
-        ...state, population: payload
+        ...state, countriesModifed: resultPopulation
       }
 
     case ORDER:
+      let resultOrder = state.countriesModifed;
+      if(payload === 'none'){
+        return state
+      }else if(payload === 'asc'){
+        resultOrder = resultOrder.sort((a,b) =>{
+          return a.name.localeCompare(b.name)
+        })
+      }else {
+        resultOrder = resultOrder.sort((a,b) =>{
+          return b.name.localeCompare(a.name)
+        })
+      }
       return {
-        ...state, order: payload
+        ...state, countriesModifed: resultOrder
       }
 
     default:

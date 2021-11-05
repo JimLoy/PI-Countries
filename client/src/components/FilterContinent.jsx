@@ -1,5 +1,6 @@
+import React from 'react';
 import { useDispatch } from 'react-redux';
-import { filterContinent } from '../redux/actions.js';
+import { filterContinent,setPage } from '../redux/actions.js';
 
 
 
@@ -9,19 +10,21 @@ export default function FilterContinent() {
 
 
   const handleFilterContinent = (e) => {
+    e.preventDefault()
     dispatch(filterContinent(e.target.value))
+    dispatch(setPage(1))
   }
 
 
   return (
-    <select onChange={handleFilterContinent(e)}>
+    <select onChange={handleFilterContinent}>
       <option value='All'>All</option>
       <option value='Americas'>Americas</option>
       <option value='Europe'>Europe</option>
       <option value='Asia'>Asia</option>
       <option value='Africa'>Africa</option>
       <option value='Oceania'>Oceania</option>
-      <option value='Antartic'>Antartic</option>
+      <option value='Antarctic'>Antarctic</option>
     </select>
   )
 }

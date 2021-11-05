@@ -1,7 +1,21 @@
-export default function Paginado ({countriesPerPage, countries, paginado}) {
+import React from 'react';
+import {useSelector,useDispatch} from 'react-redux';
+import {setPage} from '../redux/actions.js';
+
+
+export default function Paginado () {
+  const dispatch = useDispatch();
+  const {countriesModifed} = useSelector(state => state);
+
+
+  const changePage = (pageNum) => {
+    dispatch(setPage(pageNum))
+  }
+
+
   const pageNumbers = [];
 
-  for (let i = 1; i <= Math.ceil(countries/countriesPerPage); i++) {
+  for (let i = 1; i <= Math.ceil(countriesModifed.length/9); i++) {
     pageNumbers.push(i)
   }
 
@@ -9,9 +23,11 @@ export default function Paginado ({countriesPerPage, countries, paginado}) {
     <nav>
       <ul>
         {
-          pageNumbers && pageNumbers.map(num => {
-            return <li onClick={() => paginado(num)}>{num}</li>
-          })
+          pageNumbers && pageNumbers.map((num,i) => (
+              <li key={'li'+ i}>
+                <button key={'b'+ i} onClick={() => changePage(num)}>{num}</button>
+              </li>
+          ))
         }
       </ul>
     </nav>
