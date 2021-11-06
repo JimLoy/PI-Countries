@@ -4,7 +4,6 @@ import {
   SET_PAGE,
   FILTER_CONTINENT,
   FILTER_NAME_ACTIVITY,
-  ORDER_POPULATION,
   ORDER
 } from './actions.js'
 
@@ -36,7 +35,7 @@ function reducer (state = initialState, { type, payload }){
       }
 
     case FILTER_CONTINENT:
-      if(payload === 'All') return state
+      if(payload === 'All') return {...state, countriesModifed: state.countries}
       const countriesForContinent = state.countries.filter(country => country.continent === payload)
       return {
         ...state, countriesModifed: countriesForContinent
@@ -48,35 +47,22 @@ function reducer (state = initialState, { type, payload }){
         ...state, countriesModifed: countriesForActivity
       }
 
-    case ORDER_POPULATION:
-      let resultPopulation = state.countriesModifed;
-      if(payload === 'none'){
-        return state
-      }else if(payload === 'min'){
-        resultPopulation = resultPopulation.sort((a, b) => a.population - b.population)
-      }else {
-        resultPopulation = resultPopulation.sort((a, b) => b.population - a.population)
-      }
-      return {
-        ...state, countriesModifed: resultPopulation
-      }
-
     case ORDER:
       let resultOrder = state.countriesModifed;
-      if(payload === 'none'){
-        return state
-      }else if(payload === 'asc'){
+      if(payload === 'asc'){
         resultOrder = resultOrder.sort((a,b) =>{
           return a.name.localeCompare(b.name)
         })
-      }else {
+      }else if(payload === 'desc'){
         resultOrder = resultOrder.sort((a,b) =>{
           return b.name.localeCompare(a.name)
         })
+      }else if(payload === 'min'){
+        resultOrder = resultOrder.sort((a, b) => a.population - b.population)
+      }else {
+        resultOrder = resultOrder.sort((a, b) => b.population - a.population)
       }
-      return {
-        ...state, countriesModifed: resultOrder
-      }
+      return { ...state, countriesModifed: resultOrder }
 
     default:
       return state;

@@ -5,7 +5,6 @@ export const GET_COUNTRY_BY_ID = 'GET_COUNTRY_BY_ID';
 export const SET_PAGE = 'SET_PAGE';
 export const FILTER_CONTINENT = 'FILTER_CONTINENT';
 export const FILTER_NAME_ACTIVITY = 'FILTER_NAME_ACTIVITY';
-export const ORDER_POPULATION = 'ORDER_POPULATION';
 export const ORDER = 'ORDER';
 
 export function getAllCountries(name){
@@ -64,13 +63,6 @@ export function filterNameActivity(name){
   return{
     type: FILTER_NAME_ACTIVITY,
     payload: name
-  }
-}
-
-export function orderPopulation(order){
-  return{
-    type: ORDER_POPULATION,
-    payload: order
   }
 }
 

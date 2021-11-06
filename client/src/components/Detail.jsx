@@ -16,7 +16,7 @@ export default function Detail({match}) {
   },[dispatch,id])
 
   const goToBack = ()=>{
-    history.goBack()
+    history.push("/home");
   }
 
   return (
@@ -31,7 +31,7 @@ export default function Detail({match}) {
         <p>{country.capital}</p>
         <p>{country.continent}</p>
         <p>{country.subregion}</p>
-        <p>{country.area}</p>
+        <p>{country.area + ' Km2'}</p>
         <p>{country.population}</p>
         <ul>
           {
@@ -43,7 +43,7 @@ export default function Detail({match}) {
       :
       <div>Cargando...</div>
       }
-      <button onClick={goToBack}> ⬅ </button>
+      <button onClick={goToBack}> Back </button>
     </div>
   )
 }

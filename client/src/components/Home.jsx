@@ -5,7 +5,6 @@ import Country from './Country.jsx';
 import Paginado from './Paginado.jsx';
 import FilterContinent from './FilterContinent.jsx';
 import Order from './Order.jsx';
-import OrderPopulation from './OrderPopulation.jsx'
 import Search from './Search.jsx';
 
 export default function Home() {
@@ -26,7 +25,7 @@ export default function Home() {
       <Search/>
       <FilterContinent/>
       <Order/>
-      <OrderPopulation/>
+    
 
       <div className='Countries'>
       {

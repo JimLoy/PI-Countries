@@ -1,6 +1,6 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import { order } from '../redux/actions.js';
+import {useDispatch} from 'react-redux';
+import {order,setPage} from '../redux/actions.js';
 
 
 export default function Order() {
@@ -10,6 +10,7 @@ export default function Order() {
   const handleOrder = (e) => {
     e.preventDefault()
     dispatch(order(e.target.value))
+    dispatch(setPage(1))
   }
 
 
@@ -18,6 +19,8 @@ export default function Order() {
       <option value='none'>None</option>
       <option value='asc'>A-Z</option>
       <option value='desc'>Z-A</option>
+      <option value='max'>Max-Min</option>
+      <option value='min'>Min-Max</option>
     </select>
   )
 }

@@ -11,7 +11,7 @@ async function preCountry(){
       countries.map(coun =>{
         Country.create({
           id: coun.cca3,
-          name: coun.name.official,
+          name: coun.name.common,
           flag: coun.flags[1],
           continent: coun.region,
           capital: coun.capital?coun.capital[0]:'none',
@@ -29,7 +29,7 @@ async function preCountry(){
 };
 
 
-async function getCountries (req, res, next) {
+async function getCountries (req, res, next){
   let {name} = req.query;
   let country;
   try {
@@ -40,13 +40,13 @@ async function getCountries (req, res, next) {
             [Op.substring]: name
           }
         },
-        attributes: ['flag', 'name', 'continent'],
+        attributes: ['id','flag', 'name', 'continent','population'],
         include:  Activity
       });
       if (country.length < 1) res.json('Country Not Found')
       res.json(country)
     } else {//-------------------SIN--NOMBRE--------------------------------
-    country = await Country.findAll({attributes:['flag', 'name', 'continent']})
+    country = await Country.findAll({attributes:['id','flag', 'name', 'continent','population']})
     res.json(country)
     }
   } catch (err) {
@@ -55,7 +55,7 @@ async function getCountries (req, res, next) {
 };
 
 
-async function getCountriesId (req, res, next) {
+async function getCountriesId (req, res, next){
   const { id } = req.params;
   try{
     let country = await Country.findByPk(id,{ include: Activity });
@@ -69,8 +69,32 @@ async function getCountriesId (req, res, next) {
 
 
 
+
+
+
 module.exports = {
   preCountry,
   getCountries,
-  getCountriesId
+  getCountriesId,
 };
+
+
+/*async function getCountriesByName (countries){
+  countries = countries.split(',')
+  countries = countries.map(country => country[0].toUpperCase() + country.slice(1).toLowerCase())
+  try{
+    countries = await Promise.all(countries.map(name => {
+      let id = Country.findAll({
+        where: {
+          name: { [Op.substring]: name }
+        },
+        attributes: 'id',
+      });
+      return id
+    }));
+
+    return countries;
+  } catch (err){
+    console.log(err)
+  }
+}*/
