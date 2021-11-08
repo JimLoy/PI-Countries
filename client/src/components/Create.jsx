@@ -1,12 +1,11 @@
 import {useState} from 'react';
-import {useSelector, useDispatch} from "react-redux";
+import {useDispatch} from "react-redux";
 import {useHistory} from "react-router-dom";
 import {createActivity} from "../redux/actions.js";
 
 export default function  Create() {
   const dispatch = useDispatch()
   const history = useHistory();
-  const {countries} = useSelector(state=> state)
   let [activity,setActivity] = useState({
     name:'',
     countries:'',

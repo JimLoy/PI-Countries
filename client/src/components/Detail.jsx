@@ -27,21 +27,40 @@ export default function Detail({match}) {
       <>
         <img src={country.flag} alt=''/>
         <h1>{country.name}</h1>
+
+        <label>Id: </label>
         <p>{country.id}</p>
+
+        <label>Capital: </label>
         <p>{country.capital}</p>
+
+        <label>Continent: </label>
         <p>{country.continent}</p>
+
+        <label>Subregion: </label>
         <p>{country.subregion}</p>
+
+        <label>Area: </label>
         <p>{country.area + ' Km2'}</p>
+
+        <label>Population: </label>
         <p>{country.population}</p>
-        <ul>
-          {
-            country.activities.map((activity,i) => <li key={i}>{activity}</li>)
-          }
-        </ul>
+
+        <label>Activities: </label>
+        {
+          country.activities.length ?
+        <>
+          <p>{country.activities[0].name}</p>
+          <p>{country.activities[0].difficulty}</p>
+          <p>{country.activities[0].duration}</p>
+          <p>{country.activities[0].season}</p>
+        </>
+        : <p>Activities not found</p>
+        }
 
       </>
       :
-      <div>Cargando...</div>
+      <h1>Country not found</h1>
       }
       <button onClick={goToBack}> Back </button>
     </div>

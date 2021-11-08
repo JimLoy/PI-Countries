@@ -22,7 +22,7 @@ export default  function Search() {
 
   return (
     <form onSubmit={onSubmit}>
-      <input type='text' placeholder='Search...' onChange={handleOnChange} value={input} />
+      <input type='text' placeholder='Search country...' onChange={handleOnChange} value={input} />
       <button type='submit' >🔍</button>
     </form>
   )

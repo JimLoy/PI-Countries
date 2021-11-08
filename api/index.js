@@ -22,7 +22,7 @@ const { conn } = require('./src/db.js');
 const { preCountry } = require('./src/routes/controllers/countries.js');
 
 // Syncing all the models at once.
-conn.sync({ force: true }).then(() => {
+conn.sync({ force: false }).then(() => {
   server.listen(3001, async () => {
     const preload = await preCountry();
     console.log('%s ' + preload);

@@ -44,7 +44,7 @@ async function getCountries (req, res, next){
         include:  Activity
       });
       if (country.length < 1) res.json('Country Not Found')
-      res.json(country)
+      else res.json(country)
     } else {//-------------------SIN--NOMBRE--------------------------------
     country = await Country.findAll({attributes:['id','flag', 'name', 'continent','population']})
     res.json(country)
@@ -77,24 +77,3 @@ module.exports = {
   getCountries,
   getCountriesId,
 };
-
-
-/*async function getCountriesByName (countries){
-  countries = countries.split(',')
-  countries = countries.map(country => country[0].toUpperCase() + country.slice(1).toLowerCase())
-  try{
-    countries = await Promise.all(countries.map(name => {
-      let id = Country.findAll({
-        where: {
-          name: { [Op.substring]: name }
-        },
-        attributes: 'id',
-      });
-      return id
-    }));
-
-    return countries;
-  } catch (err){
-    console.log(err)
-  }
-}*/

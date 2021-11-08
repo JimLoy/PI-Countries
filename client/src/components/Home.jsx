@@ -25,11 +25,11 @@ export default function Home() {
       <Search/>
       <FilterContinent/>
       <Order/>
-    
+
 
       <div className='Countries'>
       {
-        currentCountries?.map((country,i) => {
+        currentCountries && Array.isArray(currentCountries) ? currentCountries.map((country,i) => {
           return <Country
             id={country.id}
             name={country.name}
@@ -38,6 +38,14 @@ export default function Home() {
             key={i}
           />
         })
+        :
+        <Country
+          id={currentCountries.id}
+          name={currentCountries.name}
+          flag={currentCountries.flag}
+          continent={currentCountries.continent}
+          key={currentCountries.id}
+        />
       }
       </div>
         <Paginado/>
