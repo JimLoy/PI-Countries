@@ -1,11 +1,13 @@
 import React,{useEffect} from 'react';
 import {useDispatch,useSelector} from 'react-redux';
-import {getAllCountries} from '../redux/actions.js';
+import {getAllCountries,getNamesActivity} from '../redux/actions.js';
 import Country from './Country.jsx';
 import Paginado from './Paginado.jsx';
 import FilterContinent from './FilterContinent.jsx';
+import FilterNameActivity from './FilterNameActivity.jsx';
 import Order from './Order.jsx';
 import Search from './Search.jsx';
+import styles from '../styles/home.module.css';
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -18,16 +20,18 @@ export default function Home() {
 
   useEffect(()=>{
     dispatch(getAllCountries())
+    dispatch(getNamesActivity())
   },[dispatch])
 
   return (
-    <div className='Home'>
+    <div className={styles.home}>
       <Search/>
       <FilterContinent/>
+      <FilterNameActivity/>
       <Order/>
 
 
-      <div className='Countries'>
+      <div className={styles.countries}>
       {
         currentCountries && Array.isArray(currentCountries) ? currentCountries.map((country,i) => {
           return <Country
@@ -46,6 +50,9 @@ export default function Home() {
           continent={currentCountries.continent}
           key={currentCountries.id}
         />
+      }
+      {
+        currentCountries.length === 0 ? <h1>Countries not found</h1> : ''
       }
       </div>
         <Paginado/>

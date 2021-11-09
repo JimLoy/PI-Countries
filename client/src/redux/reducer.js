@@ -4,6 +4,7 @@ import {
   SET_PAGE,
   FILTER_CONTINENT,
   FILTER_NAME_ACTIVITY,
+  GET_NAMES_ACTIVITY,
   ORDER
 } from './actions.js'
 
@@ -12,7 +13,7 @@ const initialState = {
   countries: [],
   countriesModifed: [],
   country:{},
-  nameActivity:'',
+  namesActivity:[],
   page:1,
 }
 
@@ -36,15 +37,22 @@ function reducer (state = initialState, { type, payload }){
 
     case FILTER_CONTINENT:
       if(payload === 'All') return {...state, countriesModifed: state.countries}
-      const countriesForContinent = state.countries.filter(country => country.continent === payload)
+      const countriesByContinent = state.countries.filter(country => country.continent === payload)
       return {
-        ...state, countriesModifed: countriesForContinent
+        ...state, countriesModifed: countriesByContinent
       }
 
     case FILTER_NAME_ACTIVITY:
-      const countriesForActivity = state.countries.filter(country => country.activity.name === payload);
+      if(payload === 'All') return {...state, countriesModifed: state.countries}
+      const activitiesByName = state.countries.filter(country => country.activities.length ? (country.activities.map(act => act.name === payload ? true : false).includes(true)) : false)
       return {
-        ...state, countriesModifed: countriesForActivity
+        ...state, countriesModifed: activitiesByName
+      }
+
+    case GET_NAMES_ACTIVITY:
+      const names = payload.map(nam => nam.name);
+      return {
+        ...state, namesActivity: names
       }
 
     case ORDER:

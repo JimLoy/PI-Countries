@@ -22,7 +22,7 @@ async function postActivity (req, res, next) {
     let ids = []
   try{
     await getCountriesByName(countries,ids)
-    console.log(ids)
+    season = season[0].toUpperCase() + season.slice(1).toLowerCase()
     const newActivity = await Activity.create({name, difficulty, duration, season});
     await newActivity.addCountries(ids)
     res.json('Activity Created')
@@ -33,7 +33,20 @@ async function postActivity (req, res, next) {
 };
 
 
+async function getActivitiesName (req,res,next) {
+  try{
+    const names = await Activity.findAll({
+      attributes: ["name"],
+    });
+
+    res.json(names);
+  }
+  catch(err){
+    next(err)
+  }
+};
 
 module.exports = {
-  postActivity
+  postActivity,
+  getActivitiesName
 };

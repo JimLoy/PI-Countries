@@ -49,13 +49,16 @@ export default function Detail({match}) {
         <label>Activities: </label>
         {
           country.activities.length ?
-        <>
-          <p>{country.activities[0].name}</p>
-          <p>{country.activities[0].difficulty}</p>
-          <p>{country.activities[0].duration}</p>
-          <p>{country.activities[0].season}</p>
-        </>
-        : <p>Activities not found</p>
+          country.activities.map(act =>(
+            <>
+              <p>{act.name}</p>
+              <p>{act.difficulty}</p>
+              <p>{act.duration}</p>
+              <p>{act.season}</p>
+            </>
+          ))
+          :
+          <p>Activities not found</p>
         }
 
       </>

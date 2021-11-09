@@ -9,15 +9,17 @@ async function preCountry(){
     let countries = (await axios.get('https://restcountries.com/v3/all')).data;
     countries = await Promise.all(
       countries.map(coun =>{
-        Country.create({
-          id: coun.cca3,
-          name: coun.name.common,
-          flag: coun.flags[1],
-          continent: coun.region,
-          capital: coun.capital?coun.capital[0]:'none',
-          subregion: coun.subregion?coun.subregion:'none',
-          area: coun.area,
-          population: coun.population
+        Country.findOrCreate({
+          where:{
+            id: coun.cca3,
+            name: coun.name.common,
+            flag: coun.flags[1],
+            continent: coun.region,
+            capital: coun.capital?coun.capital[0]:'Not found',
+            subregion: coun.subregion?coun.subregion:'Not found',
+            area: coun.area,
+            population: coun.population
+          }
         })
       })
     );
@@ -46,7 +48,7 @@ async function getCountries (req, res, next){
       if (country.length < 1) res.json('Country Not Found')
       else res.json(country)
     } else {//-------------------SIN--NOMBRE--------------------------------
-    country = await Country.findAll({attributes:['id','flag', 'name', 'continent','population']})
+    country = await Country.findAll({attributes:['id','flag', 'name', 'continent','population'],include:  Activity})
     res.json(country)
     }
   } catch (err) {

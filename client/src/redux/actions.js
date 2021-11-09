@@ -5,6 +5,7 @@ export const GET_COUNTRY_BY_ID = 'GET_COUNTRY_BY_ID';
 export const SET_PAGE = 'SET_PAGE';
 export const FILTER_CONTINENT = 'FILTER_CONTINENT';
 export const FILTER_NAME_ACTIVITY = 'FILTER_NAME_ACTIVITY';
+export const GET_NAMES_ACTIVITY = 'GET_NAMES_ACTIVITY';
 export const ORDER = 'ORDER';
 
 export function getAllCountries(name){
@@ -63,6 +64,19 @@ export function filterNameActivity(name){
   return{
     type: FILTER_NAME_ACTIVITY,
     payload: name
+  }
+}
+
+export function getNamesActivity(){
+  return dispatch => {
+    axios.get(`http://localhost:3001/activitiesName`)
+    .then(names => {
+      return dispatch({
+        type: GET_NAMES_ACTIVITY,
+        payload: names.data
+      })
+    })
+    .catch(err => console.log(err))
   }
 }
 

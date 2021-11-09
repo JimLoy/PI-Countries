@@ -1,23 +1,30 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import { filterContinent } from '../redux/actions.js';
+import { useDispatch, useSelector } from 'react-redux';
+import { filterNameActivity } from '../redux/actions.js';
 
 
 
 export default function FilterContinent() {
   const dispatch = useDispatch();
+  const {namesActivity} = useSelector(state => state);
 
 
 
-  const handleFilterContinent = (e) => {
-    dispatch(filterContinent(e.target.value))
+
+  const handleFilterNameActivity = (e) => {
+    dispatch(filterNameActivity(e.target.value))
   }
 
 
   return (
-    <select onChange={handleFilterContinent(e)}>
+    <select onChange={handleFilterNameActivity}>
       <option value='All'>All</option>
-      <option value=''></option>
+      {
+        namesActivity && namesActivity.map((name,i) => (
+          <option key={i} value={name}>{name}</option>
+        ))
+
+      }
 
     </select>
   )

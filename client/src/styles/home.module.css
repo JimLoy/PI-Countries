@@ -1,0 +1,10 @@
+.home{
+  justify-content: center;
+  
+}
+
+.countries{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}

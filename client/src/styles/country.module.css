@@ -1,0 +1,11 @@
+.country {
+  background-color: white;
+  border: solid gray;
+  width:450px;
+  margin: 40px;
+}
+
+.imgCountry{
+  
+  border: thick double gray;
+}

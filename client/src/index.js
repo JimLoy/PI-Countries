@@ -5,6 +5,7 @@ import {Provider} from 'react-redux';
 import reportWebVitals from './reportWebVitals';
 import App from './App';
 import store from './redux/store.js';
+import './styles/normalize.css';
 import './styles/index.css';
 
 ReactDOM.render(
