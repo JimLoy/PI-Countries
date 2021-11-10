@@ -1,9 +1,10 @@
 import React from 'react';
 import {useSelector,useDispatch} from 'react-redux';
 import {setPage} from '../redux/actions.js';
+import styles from '../styles/paged.module.css';
 
 
-export default function Paginado () {
+export default function Paged () {
   const dispatch = useDispatch();
   const {countriesModifed} = useSelector(state => state);
 
@@ -21,11 +22,11 @@ export default function Paginado () {
 
   return (
     <nav>
-      <ul>
+      <ul  className={styles.paged}>
         {
           pageNumbers && pageNumbers.map((num,i) => (
-              <li key={'li'+ i}>
-                <button key={'b'+ i} onClick={() => changePage(num)}>{num}</button>
+              <li className={styles.item} key={'li'+ i}>
+                <a className={styles.num} key={'b'+ i} href=' ' onClick={() => changePage(num)}>{num}</a>
               </li>
           ))
         }

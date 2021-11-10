@@ -16,9 +16,9 @@ export default function Order() {
 
   return (
     <select onChange={handleOrder}>
-      <option value='none'>None</option>
-      <option value='asc'>A-Z</option>
-      <option value='desc'>Z-A</option>
+    <option value='' disabled selected>None</option>
+      <option value='AZ'>A-Z</option>
+      <option value='ZA'>Z-A</option>
       <option value='max'>Max-Min</option>
       <option value='min'>Min-Max</option>
     </select>

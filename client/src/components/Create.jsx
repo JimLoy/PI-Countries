@@ -11,7 +11,7 @@ export default function  Create() {
     countries:'',
     difficulty:0,
     duration:'',
-    season:'',
+    season:'Summer',
   });
 
   const handleOnChange = (e) => {
@@ -80,7 +80,6 @@ export default function  Create() {
         <div>
           <label>Season: </label>
           <select onChange={handleOnChange} name='season'>
-            <option value='' disabled=''>...</option>
             <option value='Summer' name='Summer'>Summer</option>
             <option value='Autumn' name='Autumn'>Autumn</option>
             <option value='Winter' name='Winter'>Winter</option>
@@ -88,7 +87,6 @@ export default function  Create() {
           </select>
         </div>
         <input type='submit' value='Save' />
-        <input type='reset' value='Reset' />
       </form>
     </div>
   )

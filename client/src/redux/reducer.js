@@ -57,17 +57,17 @@ function reducer (state = initialState, { type, payload }){
 
     case ORDER:
       let resultOrder = state.countriesModifed;
-      if(payload === 'asc'){
+      if(payload === 'AZ'){
         resultOrder = resultOrder.sort((a,b) =>{
           return a.name.localeCompare(b.name)
         })
-      }else if(payload === 'desc'){
+      }else if(payload === 'ZA'){
         resultOrder = resultOrder.sort((a,b) =>{
           return b.name.localeCompare(a.name)
         })
       }else if(payload === 'min'){
         resultOrder = resultOrder.sort((a, b) => a.population - b.population)
-      }else {
+      }else if(payload === 'max'){
         resultOrder = resultOrder.sort((a, b) => b.population - a.population)
       }
       return { ...state, countriesModifed: resultOrder }

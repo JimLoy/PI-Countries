@@ -1,11 +1,14 @@
 .country {
-  background-color: white;
-  border: solid gray;
+  backdrop-filter: blur(16px);
+  border: solid yellow;
   width:450px;
   margin: 40px;
+  padding-top: 10px;
+  text-decoration: none;
+  color: white
 }
 
-.imgCountry{
-  
-  border: thick double gray;
+
+.country:hover {
+  background: gray;
 }

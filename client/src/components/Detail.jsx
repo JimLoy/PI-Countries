@@ -2,6 +2,7 @@ import React,{useEffect} from 'react';
 import {useDispatch,useSelector} from 'react-redux';
 import {useHistory} from 'react-router-dom';
 import {getCountryById} from '../redux/actions.js';
+import styles from '../styles/detail.module.css';
 
 
 
@@ -20,7 +21,7 @@ export default function Detail({match}) {
   }
 
   return (
-    <div>
+    <div className={styles.detail}>
       {
 
       country?.name ?
@@ -65,7 +66,7 @@ export default function Detail({match}) {
       :
       <h1>Country not found</h1>
       }
-      <button onClick={goToBack}> Back </button>
+      <button className={styles.btn} onClick={goToBack}> Back </button>
     </div>
   )
 }

@@ -1,0 +1,16 @@
+.navBar {
+  display: flex;
+  backdrop-filter: blur(8px);
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+  border-bottom: solid 2px yellow;
+}
+
+.link {
+  text-decoration: none;
+  color: white;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 1.5rem
+}

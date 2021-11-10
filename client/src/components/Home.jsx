@@ -2,7 +2,7 @@ import React,{useEffect} from 'react';
 import {useDispatch,useSelector} from 'react-redux';
 import {getAllCountries,getNamesActivity} from '../redux/actions.js';
 import Country from './Country.jsx';
-import Paginado from './Paginado.jsx';
+import Paged from './Paged.jsx';
 import FilterContinent from './FilterContinent.jsx';
 import FilterNameActivity from './FilterNameActivity.jsx';
 import Order from './Order.jsx';
@@ -30,6 +30,7 @@ export default function Home() {
       <FilterNameActivity/>
       <Order/>
 
+      <Paged/>
 
       <div className={styles.countries}>
       {
@@ -55,7 +56,6 @@ export default function Home() {
         currentCountries.length === 0 ? <h1>Countries not found</h1> : ''
       }
       </div>
-        <Paginado/>
     </div>
   )
 }

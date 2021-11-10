@@ -1,11 +1,12 @@
 import React from 'react';
-import {NavLink} from 'react-router-dom';
+import {Link} from 'react-router-dom';
+import styles from '../styles/navBar.module.css';
 
 export default function NavBar () {
   return (
-    <nav>
-      <NavLink to={'/home'}>Home</NavLink>
-      <NavLink to={'/home/create'}>Create your own activities</NavLink>
+    <nav className={styles.navBar}>
+      <Link className={styles.link} to={'/home'}>Home</Link>
+      <Link className={styles.link} to={'/home/create'}>Create your own activities</Link>
     </nav>
   )
 }
