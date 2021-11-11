@@ -1,7 +1,7 @@
 import React from 'react';
 import {useDispatch} from 'react-redux';
 import {order,setPage} from '../redux/actions.js';
-
+import styles from '../styles/filtersAndOrders.module.css';
 
 export default function Order() {
   const dispatch = useDispatch();
@@ -15,12 +15,12 @@ export default function Order() {
 
 
   return (
-    <select onChange={handleOrder}>
-    <option value='' disabled selected>None</option>
-      <option value='AZ'>A-Z</option>
-      <option value='ZA'>Z-A</option>
-      <option value='max'>Max-Min</option>
-      <option value='min'>Min-Max</option>
+    <select className={styles.filtersOrders} defaultValue='none' onChange={handleOrder}>
+      <option  value='none' disabled >None</option>
+      <option className={styles.opt} value='AZ'>A-Z</option>
+      <option className={styles.opt} value='ZA'>Z-A</option>
+      <option className={styles.opt} value='max'>Max-Min</option>
+      <option className={styles.opt} value='min'>Min-Max</option>
     </select>
   )
 }

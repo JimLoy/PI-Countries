@@ -8,16 +8,14 @@ export default function Paged () {
   const dispatch = useDispatch();
   const {countriesModifed} = useSelector(state => state);
 
-
-  const changePage = (pageNum) => {
-    dispatch(setPage(pageNum))
-  }
-
-
   const pageNumbers = [];
 
   for (let i = 1; i <= Math.ceil(countriesModifed.length/9); i++) {
     pageNumbers.push(i)
+  }
+
+  const changePage = (pageNum) => {
+    dispatch(setPage(pageNum))
   }
 
   return (
@@ -25,9 +23,9 @@ export default function Paged () {
       <ul  className={styles.paged}>
         {
           pageNumbers && pageNumbers.map((num,i) => (
-              <li className={styles.item} key={'li'+ i}>
-                <a className={styles.num} key={'b'+ i} href=' ' onClick={() => changePage(num)}>{num}</a>
-              </li>
+            <li className={styles.item} key={'li'+ i}>
+              <p className={styles.num} key={'b'+ i}  onClick={() => changePage(num)}>{num}</p>
+            </li>
           ))
         }
       </ul>

@@ -1,14 +1,19 @@
 .country {
-  backdrop-filter: blur(16px);
-  border: solid yellow;
-  width:450px;
+  backdrop-filter: var(--blur);
+  border: solid var(--primary-color);
+  width: 450px;
   margin: 40px;
   padding-top: 10px;
   text-decoration: none;
-  color: white
+  color: white;
+  border-radius: var(--border-radius);
 }
 
-
 .country:hover {
-  background: gray;
+  backdrop-filter: none;
+}
+
+.country:focus {
+  outline: none;
+  backdrop-filter: none;
 }

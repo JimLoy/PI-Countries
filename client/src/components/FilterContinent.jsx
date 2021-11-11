@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { filterContinent,setPage } from '../redux/actions.js';
+import styles from '../styles/filtersAndOrders.module.css';
 
 
 
@@ -17,14 +18,14 @@ export default function FilterContinent() {
 
 
   return (
-    <select onChange={handleFilterContinent}>
-      <option value='All'>All</option>
-      <option value='Americas'>Americas</option>
-      <option value='Europe'>Europe</option>
-      <option value='Asia'>Asia</option>
-      <option value='Africa'>Africa</option>
-      <option value='Oceania'>Oceania</option>
-      <option value='Antarctic'>Antarctic</option>
+    <select className={styles.filtersOrders} onChange={handleFilterContinent}>
+      <option className={styles.opt} value='All'>All</option>
+      <option className={styles.opt} value='Americas'>Americas</option>
+      <option className={styles.opt} value='Europe'>Europe</option>
+      <option className={styles.opt} value='Asia'>Asia</option>
+      <option className={styles.opt} value='Africa'>Africa</option>
+      <option className={styles.opt} value='Oceania'>Oceania</option>
+      <option className={styles.opt} value='Antarctic'>Antarctic</option>
     </select>
   )
 }

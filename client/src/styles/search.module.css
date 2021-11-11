@@ -1,0 +1,19 @@
+.search {
+  margin-top: 1rem;
+  margin-right: 2rem;
+  background-color: var(--secondary-color);
+  border: solid 2px var(--primary-color);
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 300;
+  width: 20rem;
+  border-radius: var(--border-radius);
+}
+
+.search::placeholder {
+  color: white;
+}
+
+.search:focus {
+  outline: none;
+}

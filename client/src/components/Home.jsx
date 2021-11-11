@@ -16,7 +16,7 @@ export default function Home() {
   const countriesPerPage = 9;
   const indexOfLastCountry = page * countriesPerPage;
   const indexOfFirstCountry = indexOfLastCountry - countriesPerPage;
-  const currentCountries = countriesModifed.slice(indexOfFirstCountry,indexOfLastCountry);
+  const currentCountries = typeof countriesModifed === 'string' ? countriesModifed : countriesModifed.slice(indexOfFirstCountry,indexOfLastCountry);
 
   useEffect(()=>{
     dispatch(getAllCountries())
@@ -30,32 +30,25 @@ export default function Home() {
       <FilterNameActivity/>
       <Order/>
 
-      <Paged/>
-
       <div className={styles.countries}>
-      {
-        currentCountries && Array.isArray(currentCountries) ? currentCountries.map((country,i) => {
-          return <Country
-            id={country.id}
-            name={country.name}
-            flag={country.flag}
-            continent={country.continent}
-            key={i}
-          />
-        })
-        :
-        <Country
-          id={currentCountries.id}
-          name={currentCountries.name}
-          flag={currentCountries.flag}
-          continent={currentCountries.continent}
-          key={currentCountries.id}
-        />
-      }
-      {
-        currentCountries.length === 0 ? <h1>Countries not found</h1> : ''
-      }
+        {
+          currentCountries && Array.isArray(currentCountries) ?
+            currentCountries.map((country,i) => {
+              return <Country
+                id={country.id}
+                name={country.name}
+                flag={country.flag}
+                continent={country.continent}
+                key={i}
+              />
+            })
+          :
+          typeof currentCountries === 'string' ? <h1 className={styles.notFound}>{currentCountries}</h1> : ''
+        }
       </div>
+      {
+        currentCountries && Array.isArray(currentCountries) ? <Paged/> : ''
+      }
     </div>
   )
 }

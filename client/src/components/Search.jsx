@@ -1,6 +1,7 @@
 import React from 'react';
 import {useDispatch} from 'react-redux';
 import {getAllCountries} from '../redux/actions';
+import styles from '../styles/search.module.css';
 
 
 
@@ -13,6 +14,12 @@ export default  function Search() {
   }
 
   return (
-    <input id='input' type='text' placeholder='Search country...' onChange={handleOnChange}/>
+    <input
+      className={styles.search}
+      id='input'
+      type='text'
+      placeholder='Search country . . .'
+      onChange={handleOnChange}
+    />
   )
 }

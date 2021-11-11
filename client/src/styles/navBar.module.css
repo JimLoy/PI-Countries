@@ -1,16 +1,29 @@
 .navBar {
   display: flex;
-  backdrop-filter: blur(8px);
+  backdrop-filter: var(--blur);
   justify-content: space-between;
   align-items: center;
   height: 80px;
-  border-bottom: solid 2px yellow;
+  border-bottom: solid 2px var(--primary-color);
+  border-left: solid 2px var(--primary-color);
+  border-right: solid 2px var(--primary-color);
+  border-bottom-right-radius: var(--border-radius);
+  border-bottom-left-radius: var(--border-radius);
+  margin-bottom: 30px;
 }
 
 .link {
   text-decoration: none;
-  color: white;
-  padding-left: 10px;
-  padding-right: 10px;
+  color: var(--primary-color);
+  margin-left: 2rem;
+  margin-right: 2rem;
   font-size: 1.5rem
+}
+
+.link,navBar:focus {
+  outline: none;
+}
+
+.navBar:hover {
+  backdrop-filter: none;
 }

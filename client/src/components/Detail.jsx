@@ -1,6 +1,5 @@
 import React,{useEffect} from 'react';
 import {useDispatch,useSelector} from 'react-redux';
-import {useHistory} from 'react-router-dom';
 import {getCountryById} from '../redux/actions.js';
 import styles from '../styles/detail.module.css';
 
@@ -10,63 +9,71 @@ export default function Detail({match}) {
   const { id } = match.params;
   const { country } = useSelector(state => state);
   const dispatch = useDispatch();
-  const history = useHistory();
+
 
   useEffect(()=>{
     dispatch(getCountryById(id))
   },[dispatch,id])
 
-  const goToBack = ()=>{
-    history.push("/home");
-  }
 
   return (
+
     <div className={styles.detail}>
       {
 
       country?.name ?
       <>
-        <img src={country.flag} alt=''/>
-        <h1>{country.name}</h1>
+        <img className={styles.flag} src={country.flag} alt=''/>
 
-        <label>Id: </label>
-        <p>{country.id}</p>
+        <h1 className={styles.name} >{country.name}</h1>
 
-        <label>Capital: </label>
-        <p>{country.capital}</p>
+        <div className={styles.data}>
+          <p>Id: </p>
+          <p>{country.id}</p>
 
-        <label>Continent: </label>
-        <p>{country.continent}</p>
+          <p>Capital: </p>
+          <p>{country.capital}</p>
 
-        <label>Subregion: </label>
-        <p>{country.subregion}</p>
+          <p>Continent: </p>
+          <p>{country.continent}</p>
 
-        <label>Area: </label>
-        <p>{country.area + ' Km2'}</p>
+          <p>Subregion: </p>
+          <p>{country.subregion}</p>
 
-        <label>Population: </label>
-        <p>{country.population}</p>
+          <p>Area: </p>
+          <p>{country.area + ' Km²'}</p>
 
-        <label>Activities: </label>
-        {
-          country.activities.length ?
-          country.activities.map(act =>(
-            <>
-              <p>{act.name}</p>
-              <p>{act.difficulty}</p>
-              <p>{act.duration}</p>
-              <p>{act.season}</p>
-            </>
-          ))
-          :
-          <p>Activities not found</p>
-        }
+          <p>Population: </p>
+          <p>{country.population}</p>
 
+        </div>
+        <h2 className={styles.actTitle}>Activities</h2>
+        <div className={styles.activities}>
+          {
+            country.activities.length ?
+            country.activities.map(act =>(
+              <div className={styles.activity}>
+                <p>Name: </p>
+                <p>{act.name}</p>
+
+                <p>Difficulty: </p>
+                <p>{act.difficulty}</p>
+
+                <p>Duration: </p>
+                <p>{act.duration}</p>
+
+                <p>Season: </p>
+                <p>{act.season}</p>
+              </div>
+            ))
+            :
+            <p>Not found</p>
+          }
+          </div>
       </>
       :
       <h1>Country not found</h1>
       }
-      <button className={styles.btn} onClick={goToBack}> Back </button>
     </div>
   )
 }

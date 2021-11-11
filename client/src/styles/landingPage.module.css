@@ -9,6 +9,17 @@
 
 }
 
-.logo{
-  cursor: pointer;
+
+.link{
+  width: 150px;
+  height: 100px;
+  background-image: url('../assets/icon.png');
+  outline:none;
+  transition: background-image 0.5s;
+}
+
+
+
+.link:hover{
+  background-image: url('../assets/iconTransition.png');
 }
