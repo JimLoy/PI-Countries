@@ -22,7 +22,7 @@ function reducer (state = initialState, { type, payload }){
 
     case GET_ALL_COUNTRIES:
       return {
-        ...state, countries: payload, countriesModifed: payload
+        ...state, countries: payload, countriesModifed: [...payload]
       }
 
     case GET_COUNTRY_BY_ID:

@@ -27,7 +27,7 @@ module.exports = (sequelize) => {
     },
     subregion: DataTypes.STRING,
     area: DataTypes.FLOAT,
-    population: DataTypes.FLOAT,
+    population: DataTypes.INTEGER,
   },
   {
     timestamps: false,

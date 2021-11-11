@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { filterNameActivity } from '../redux/actions.js';
+import { filterNameActivity, setPage } from '../redux/actions.js';
 import styles from '../styles/filtersAndOrders.module.css';
 
 
@@ -9,7 +9,9 @@ export default function FilterContinent() {
   const {namesActivity} = useSelector(state => state);
 
   const handleFilterNameActivity = (e) => {
+    e.preventDefault()
     dispatch(filterNameActivity(e.target.value))
+    dispatch(setPage(1))
   }
 
   return (

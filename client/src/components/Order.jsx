@@ -16,7 +16,7 @@ export default function Order() {
 
   return (
     <select className={styles.filtersOrders} defaultValue='none' onChange={handleOrder}>
-      <option  value='none' disabled >None</option>
+      <option  value='none'disabled>None</option>
       <option className={styles.opt} value='AZ'>A-Z</option>
       <option className={styles.opt} value='ZA'>Z-A</option>
       <option className={styles.opt} value='max'>Max-Min</option>
