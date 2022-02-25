@@ -14,22 +14,10 @@
 - Afirmar y conectar los conceptos aprendidos en la carrera.
 - Aprender mejores prácticas.
 - Aprender y practicar el workflow de GIT.
-- Usar y practicar testing.
-
-## Horarios y Fechas
 
 El proyecto tendrá una duración máxima de tres semanas. En el caso de que completan todas las tareas antes de dicho lapso podrán avisar a su Instructor para coordinar una fecha de presentación del trabajo (DEMO).
 
-## Comenzando
-
- 1. Forkear el repositorio para tener una copia del mismo en sus cuentas
- 2. Clonar el repositorio en sus computadoras para comenzar a trabajar
-
-Tendrán un `boilerplate` con la estructura general tanto del servidor como de cliente.
-
-__IMPORTANTE:__ Es necesario contar minimamente con la última versión estable de Node y NPM. Asegurarse de contar con ella para poder instalar correctamente las dependecias necesarias para correr el proyecto.
-
-Actualmente las versiónes necesarias son:
+## Versiónes Minimas 
 
  * __Node__: 12.18.3 o mayor
  * __NPM__: 6.14.16 o mayor
@@ -40,23 +28,6 @@ Para verificar que versión tienen instalada:
 >
 > npm -v
 
-## BoilerPlate
-
-El boilerplate cuenta con dos carpetas: `api` y `client`. En estas carpetas estará el código del back-end y el front-end respectivamente.
-
-En `api` crear un archivo llamado: `.env` que tenga la siguiente forma:
-
-```
-DB_USER=usuariodepostgres
-DB_PASSWORD=passwordDePostgres
-DB_HOST=localhost
-```
-
-Reemplazar `usuariodepostgres` y `passwordDePostgres` con tus propias credenciales para conectarte a postgres. Este archivo va ser ignorado en la subida a github, ya que contiene información sensible (las credenciales).
-
-Adicionalmente será necesario que creen desde psql una base de datos llamada `countries`
-
-El contenido de `client` fue creado usando: Create React App.
 
 ## Enunciado
 
@@ -142,13 +113,10 @@ El modelo de la base de datos deberá tener las siguientes entidades (Aquellas p
   - Duración
   - Temporada (Verano, Otoño, Invierno o Primavera)
 
-La relación entre ambas entidades debe ser de muchos a muchos ya que un país puede contener varias actividades turísticas y, a su vez, una actividad turística puede darse en múltiples países. Por ejemplo una actividad podría ser "Ski" que podría ocurrir en Argentina y también en Estados Unidos, pero a su vez Argentina podría también incluir "Rafting".
-
 #### Backend
 
 Se debe desarrollar un servidor en Node/Express con las siguientes rutas:
 
-__IMPORTANTE__: No está permitido utilizar los filtrados, ordenamientos y paginados brindados por la API externa, todas estas funcionalidades tienen que implementarlas ustedes.
 
 - [ ] __GET /countries__:
   - En una primera instancia deberán traer todos los países desde restcountries y guardarlos en su propia base de datos y luego ya utilizarlos desde allí (Debe almacenar solo los datos necesarios para la ruta principal)
@@ -163,9 +131,3 @@ __IMPORTANTE__: No está permitido utilizar los filtrados, ordenamientos y pagin
 - [ ] __POST /activity__:
   - Recibe los datos recolectados desde el formulario controlado de la ruta de creación de actividad turística por body
   - Crea una actividad turística en la base de datos
-
-
-#### Testing
-- [ ] Al menos tener un componente del frontend con sus tests respectivos
-- [ ] Al menos tener una ruta del backend con sus tests respectivos
-- [ ] Al menos tener un modelo de la base de datos con sus tests respectivos
