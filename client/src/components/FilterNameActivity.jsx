@@ -19,7 +19,7 @@ export default function FilterContinent() {
       <option className={styles.opt} value='All'>All</option>
       {
         namesActivity && namesActivity.map((name,i) => (
-          <option key={i} value={name}>{name}</option>
+          <option key={name + i} value={name}>{name}</option>
         ))
       }
     </select>
