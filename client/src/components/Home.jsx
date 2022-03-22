@@ -33,13 +33,13 @@ export default function Home() {
       <div className={styles.countries}>
         {
           currentCountries && Array.isArray(currentCountries) ?
-            currentCountries.map((country,i) => {
+            currentCountries.map(country => {
               return <Country
                 id={country.id}
                 name={country.name}
                 flag={country.flag}
                 continent={country.continent}
-                key={i}
+                key={country.id}
               />
             })
           :
