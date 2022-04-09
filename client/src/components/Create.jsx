@@ -1,12 +1,12 @@
 import {useState} from 'react';
 import {useDispatch} from "react-redux";
-import {useHistory} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import {createActivity} from "../redux/actions.js";
 import styles from '../styles/create.module.css';
 
 export default function  Create() {
   const dispatch = useDispatch()
-  const history = useHistory();
+  const navigate = useNavigate();
   let [activity,setActivity] = useState({
     name:'',
     countries:'',
@@ -31,7 +31,7 @@ export default function  Create() {
     dispatch(createActivity(activity));
     alert("Activity created");
     setActivity({ name: '', countries:[],difficulty:0, duration:0, season:''});
-    history.push("/home");
+    navigate("/home");
   }
 
   return (
