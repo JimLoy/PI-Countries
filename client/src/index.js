@@ -7,8 +7,7 @@ import store from './redux/store.js';
 import './styles/normalize.css';
 import './styles/index.css';
 
-const container = document.getElementById("root");
-const root = createRoot(container);
+const root = createRoot(document.getElementById("root"));
 
 root.render(
   <React.StrictMode>

@@ -7,6 +7,7 @@ import FilterContinent from './FilterContinent.jsx';
 import FilterNameActivity from './FilterNameActivity.jsx';
 import Order from './Order.jsx';
 import Search from './Search.jsx';
+import NavBar from './components/NavBar.jsx';
 import styles from '../styles/home.module.css';
 
 export default function Home() {
@@ -24,31 +25,34 @@ export default function Home() {
   },[dispatch])
 
   return (
-    <div className={styles.home}>
-      <Search/>
-      <FilterContinent/>
-      <FilterNameActivity/>
-      <Order/>
+    <>
+      <NavBar/>
+      <div className={styles.home}>
+        <Search/>
+        <FilterContinent/>
+        <FilterNameActivity/>
+        <Order/>
 
-      <div className={styles.countries}>
+        <div className={styles.countries}>
+          {
+            currentCountries && Array.isArray(currentCountries) ?
+              currentCountries.map(country => {
+                return <Country
+                  id={country.id}
+                  name={country.name}
+                  flag={country.flag}
+                  continent={country.continent}
+                  key={country.id}
+                />
+              })
+            :
+            typeof currentCountries === 'string' ? <h1 className={styles.notFound}>{currentCountries}</h1> : ''
+          }
+        </div>
         {
-          currentCountries && Array.isArray(currentCountries) ?
-            currentCountries.map(country => {
-              return <Country
-                id={country.id}
-                name={country.name}
-                flag={country.flag}
-                continent={country.continent}
-                key={country.id}
-              />
-            })
-          :
-          typeof currentCountries === 'string' ? <h1 className={styles.notFound}>{currentCountries}</h1> : ''
+          currentCountries && Array.isArray(currentCountries) ? <Paged/> : ''
         }
       </div>
-      {
-        currentCountries && Array.isArray(currentCountries) ? <Paged/> : ''
-      }
-    </div>
+    </>
   )
 }
