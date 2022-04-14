@@ -6,13 +6,11 @@ import styles from '../styles/filtersAndOrders.module.css';
 export default function Order() {
   const dispatch = useDispatch();
 
-
   const handleOrder = (e) => {
     e.preventDefault()
     dispatch(order(e.target.value))
     dispatch(setPage(1))
   }
-
 
   return (
     <select className={styles.filtersOrders} defaultValue='none' onChange={handleOrder}>

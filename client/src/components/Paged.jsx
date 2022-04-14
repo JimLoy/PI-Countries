@@ -6,7 +6,7 @@ import styles from '../styles/paged.module.css';
 
 export default function Paged () {
   const dispatch = useDispatch();
-  const {countriesModifed} = useSelector(state => state);
+  const {countriesModifed, page} = useSelector(state => state);
 
   const pageNumbers = [];
 
@@ -24,7 +24,7 @@ export default function Paged () {
         {
           pageNumbers && pageNumbers.map((num,i) => (
             <li className={styles.item} key={'li'+ i}>
-              <p className={styles.num} key={'b'+ i}  onClick={() => changePage(num)}>{num}</p>
+              <p className={page === num ? styles.numSelect : styles.num} key={'b'+ i}  onClick={() => changePage(num)}>{num}</p>
             </li>
           ))
         }

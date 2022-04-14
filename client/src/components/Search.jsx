@@ -3,8 +3,6 @@ import {useDispatch} from 'react-redux';
 import {getAllCountries, setPage} from '../redux/actions';
 import styles from '../styles/search.module.css';
 
-
-
 export default  function Search() {
   const dispatch = useDispatch()
 

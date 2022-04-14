@@ -2,10 +2,10 @@ import {useState} from 'react';
 import {useDispatch} from "react-redux";
 import {useNavigate} from "react-router-dom";
 import {createActivity} from "../redux/actions.js";
-import NavBar from './components/NavBar.jsx';
+import NavBar from './NavBar.jsx';
 import styles from '../styles/create.module.css';
 
-export default function  Create() {
+export default function Create() {
   const dispatch = useDispatch()
   const navigate = useNavigate();
   let [activity,setActivity] = useState({

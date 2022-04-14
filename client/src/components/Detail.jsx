@@ -1,13 +1,14 @@
 import React,{useEffect} from 'react';
+import {useParams} from 'react-router-dom';
 import {useDispatch,useSelector} from 'react-redux';
 import {getCountryById} from '../redux/actions.js';
-import NavBar from './components/NavBar.jsx';
+import NavBar from './NavBar.jsx';
 import styles from '../styles/detail.module.css';
 
 
 
-export default function Detail({match}) {
-  const { id } = match.params;
+export default function Detail() {
+  const { id } = useParams();
   const { country } = useSelector(state => state);
   const dispatch = useDispatch();
 

@@ -5,9 +5,11 @@ import styles from '../styles/country.module.css'
 export default function Country ({id,name,flag,continent}) {
   return (
     <Link className={styles.country} to={`/home/detail/${id}`}>
-      <img src={flag} alt=' '/>
-      <h1>{name}</h1>
-      <h3>{continent}</h3>
+      <img className={styles.flag} src={flag} alt=' '/>
+      <div className={styles.nameCont}>
+        <h1>{name}</h1>
+        <h3>{continent}</h3>
+      </div>
     </Link>
   )
 }

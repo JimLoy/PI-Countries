@@ -8,14 +8,11 @@ import styles from '../styles/filtersAndOrders.module.css';
 export default function FilterContinent() {
   const dispatch = useDispatch();
 
-
-
   const handleFilterContinent = (e) => {
     e.preventDefault()
     dispatch(filterContinent(e.target.value))
     dispatch(setPage(1))
   }
-
 
   return (
     <select className={styles.filtersOrders} onChange={handleFilterContinent}>

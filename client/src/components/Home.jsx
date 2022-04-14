@@ -7,7 +7,7 @@ import FilterContinent from './FilterContinent.jsx';
 import FilterNameActivity from './FilterNameActivity.jsx';
 import Order from './Order.jsx';
 import Search from './Search.jsx';
-import NavBar from './components/NavBar.jsx';
+import NavBar from './NavBar.jsx';
 import styles from '../styles/home.module.css';
 
 export default function Home() {
