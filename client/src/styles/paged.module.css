@@ -6,7 +6,6 @@
   padding: 0;
 }
 
-
 .item {
   margin: 9px;
 }
@@ -25,4 +24,11 @@
 .num:focus {
   outline: none;
   color: var(--primary-color);
+}
+
+.numSelect{
+  text-decoration: none;
+  color: var(--primary-color);
+  font-size: 1.5rem;
+  cursor: pointer;
 }

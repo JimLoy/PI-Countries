@@ -1,9 +1,8 @@
 .country {
   backdrop-filter: var(--blur);
   border: solid var(--primary-color);
-  width: 450px;
+  width: 400px;
   margin: 40px;
-  padding-top: 10px;
   text-decoration: none;
   color: white;
   border-radius: var(--border-radius);
@@ -11,9 +10,29 @@
 
 .country:hover {
   backdrop-filter: none;
+  color:var(--primary-color);
 }
 
 .country:focus {
   outline: none;
   backdrop-filter: none;
+  color:var(--primary-color);
+}
+
+.flag{
+  position: relative;
+  top: 1rem;
+  object-fit:contain;
+  max-width: 300px;
+  max-height: 150px;
+}
+
+.flag:hover{
+  outline: solid var(--primary-color);
+}
+
+.nameCont{
+  margin-top: 1rem;
+  position: relative;
+  bottom: 1px;
 }
