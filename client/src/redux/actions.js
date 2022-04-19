@@ -10,7 +10,7 @@ export const ORDER = 'ORDER';
 
 export function getAllCountries(name){
   return dispatch => {
-    axios.get(`http://localhost:3001/countries?name=${name?name:''}`)
+    axios.get(`/countries?name=${name?name:''}`)
     .then(country => {
       return dispatch({
         type: GET_ALL_COUNTRIES,
@@ -23,7 +23,7 @@ export function getAllCountries(name){
 
 export function createActivity(activity){
   return dispatch => {
-    axios.post(`http://localhost:3001/activity`, activity)
+    axios.post(`/activity`, activity)
     .then(() => {
       return dispatch({
         type: CREATE_ACTIVITY
@@ -35,7 +35,7 @@ export function createActivity(activity){
 
 export function getCountryById(id){
   return dispatch => {
-    axios.get(`http://localhost:3001/countries/${id}`)
+    axios.get(`/countries/${id}`)
     .then(country => {
       return dispatch({
         type: GET_COUNTRY_BY_ID,
@@ -69,7 +69,7 @@ export function filterNameActivity(name){
 
 export function getNamesActivity(){
   return dispatch => {
-    axios.get(`http://localhost:3001/activitiesName`)
+    axios.get(`/activitiesName`)
     .then(names => {
       return dispatch({
         type: GET_NAMES_ACTIVITY,

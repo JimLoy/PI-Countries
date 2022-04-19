@@ -23,9 +23,9 @@ const { preCountry } = require('./src/routes/controllers/countries.js');
 
 // Syncing all the models at once.
 conn.sync({ force: false }).then(() => {
-  server.listen(3001, async () => {
+  server.listen(process.env.PORT, async () => {
     const preload = await preCountry();
     console.log('%s ' + preload);
-    console.log('%s listening at 3001'); // eslint-disable-line no-console
+    console.log(`%s listening at ${process.env.PORT}`); // eslint-disable-line no-console
   });
 });
