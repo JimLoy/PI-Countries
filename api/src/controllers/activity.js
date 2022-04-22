@@ -1,4 +1,4 @@
-const { Activity } = require('../../db.js');
+const { Activity } = require('../db.js');
 const axios = require('axios').default;
 
 async function getCountriesByName (countries,ids){

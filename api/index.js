@@ -19,7 +19,7 @@
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
-const { preCountry } = require('./src/routes/controllers/countries.js');
+const { preCountry } = require('./src/controllers/countries.js');
 
 // Syncing all the models at once.
 conn.sync({ force: false }).then(() => {

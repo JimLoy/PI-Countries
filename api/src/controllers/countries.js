@@ -1,7 +1,6 @@
 const { Op } = require('sequelize');
-const { Country, Activity } = require('../../db.js');
+const { Country, Activity } = require('../db.js');
 const axios = require('axios').default;
-
 
 
 async function preCountry(){
@@ -68,11 +67,6 @@ async function getCountriesId (req, res, next){
     next(err)
   }
 };
-
-
-
-
-
 
 module.exports = {
   preCountry,
