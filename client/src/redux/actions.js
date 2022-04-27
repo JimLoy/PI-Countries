@@ -10,7 +10,7 @@ export const ORDER = 'ORDER';
 
 export function getAllCountries(name){
   return dispatch => {
-    axios.get(`/countries?name=${name?name:''}`)
+    axios.get(`/countries${name?'?name='+name:''}`)
     .then(country => {
       return dispatch({
         type: GET_ALL_COUNTRIES,
