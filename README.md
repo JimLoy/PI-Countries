@@ -132,4 +132,4 @@ Se debe desarrollar un servidor en Node/Express con las siguientes rutas:
   - Recibe los datos recolectados desde el formulario controlado de la ruta de creación de actividad turística por body
   - Crea una actividad turística en la base de datos
 
-## Deploy https://pi-countries-jimloy.vercel.app
+## Deploy in https://pi-countries-jimloy.vercel.app
